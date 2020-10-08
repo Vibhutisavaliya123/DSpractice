@@ -1,4 +1,4 @@
-#writea program to implement the  concept 
+ 
 #writea program to implement  theof Linear probity#
 
 
