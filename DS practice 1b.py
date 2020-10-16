@@ -49,7 +49,7 @@ Code:Transpose
 
 #Original Matrix
 x = [[1,2],[3,4],[5,6]]
-result = [[0, 0, 0], [0, 0, 0]]
+result = [[0, 0], [0,0],[0,0]]
 # Iterate through rows
 for i in range(len(x)):
    #Iterate through columns
