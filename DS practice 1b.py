@@ -47,14 +47,19 @@ print(num1, ch , num2, ":", result)
 
 Code:Transpose
 
-#Original Matrix
-x = [[1,2],[3,4],[5,6]]
-result = [[0, 0], [0,0],[0,0]]
-# Iterate through rows
-for i in range(len(x)):
-   #Iterate through columns
-   for j in range(len(x[0])):
-      result[j][i] = x[i][j]
-   for r in Result
-print(r)
+def transpose(matrix):
+    result = [[0, 0, 0],
+              [0, 0, 0],
+              [0, 0, 0]]
+    for i in range(len(matrix)):
+        for j in range(len(matrix[0])):
+            result[j][i] = matrix[i][j]
+    return result
 
+
+A = [[1, 5, 1],
+     [2, 4, 0],
+     [1, 2,-3]]
+
+A_transpose = transpose(A)
+print("\nTranspose of matrix A:\n",A_transpose)
