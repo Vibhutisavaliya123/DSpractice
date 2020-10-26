@@ -5,16 +5,23 @@
 
 
 Code: searching
-Def Binary_search(list value_, search,start,end):
-    if start > end:
-       return - 1
-    mid = (start + end)//2
-    if list_values[mid] == search:
-       return mid
-    if element < list_value[mid]:
-       return binary_search(list_values,search,start,mid-1)
-else:
-       return binary_search(list_values,search,start,mid+1,end)
+def linear_search(values, search_for):
+    search_at = 0
+    search_res = False
+
+# Match the value with each data element	
+    while search_at < len(values) and search_res is False:
+        if values[search_at] == search_for:
+            search_res = True
+        else:
+            search_at = search_at + 1
+
+    return search_res
+
+l = [64, 34, 25, 12, 22, 11, 90]
+print(linear_search(l, 12))
+print(linear_search(l, 91))
+
 
 
 
@@ -75,80 +82,31 @@ print(nlist)
 
 Code:reversing
 
-def Reverse(Number):  # Function Definition
-  rev = 0while(Number > 0):
-    rem = Number %10
-    rev = (rev *10) + rem
-    Number = Number //10return rev
+def reverse(s): 
 
-Number = int(input())
-rev = Reverse(Number)  # Function Call
-print("%d" %rev)
+  str = "" 
+
+  for i in s: 
+
+    str = i + str
+
+  return str
+
+  
+
+s = "Geeksforgeeks"
+
+  
+
+print ("The original string  is : ",end="") 
+
+print (s) 
+
+  
+
+print ("The reversed string(using loops) is : ",end="") 
+
+print (reverse(s)) 
    
 
-
-P1.B # writa program to perform the matrix additional, 
-Multiplication and Transpose operation.
-
-
-Code:matrix additional
-
-#Python program to perform matrix addition
-mat1 = [[1, 2], [3, 4]] #the first matrix
-mat2 = [[1, 2], [3, 4]] #the second matrix
-mat3 = [[0, 0], [0, 0]] #an empty matrix to store the result
-
-#adding two matrices
-for i in range(0, 2):
-  for j in range(0, 2):
-    mat3[i][j] = mat1[i][j] + mat2[i][j]
-
-#printing the resultant matrix
-print("Addition of two matrices")
-for i in range(0, 2):
-  for j in range(0, 2):
-    print(mat3[i][j], end = " ")
-  print()
-
-
-Code:Multiplication
-
-num1 = int(input("Enter First Number: "))
-num2 = int(input("Enter Second Number: "))
-
-print("Enter which operation would you like to perform?")
-ch = input("Enter any of these char for specific operation +,-,*,/: ")
-
-result = 0
-if ch == '+':
-    result = num1 + num2
-elif ch == '-':
-    result = num1 - num2
-elif ch == '*':
-    result = num1 * num2
-elif ch == '/':
-    result = num1 / num2
-else:
-    print("Input character is not recognized!")
-
-print(num1, ch , num2, ":", result)
-
-
-Code:Transpose
-
-#Original Matrix
-x = [[1,2],[3,4],[5,6]]
-result = [[0, 0, 0], [0, 0, 0]]
-# Iterate through rows
-for i in range(len(x)):
-   #Iterate through columns
-   for j in range(len(x[0])):
-      result[j][i] = x[i][j]
-   for r in Result
-print(r)
-
-
-
-
-      
 
