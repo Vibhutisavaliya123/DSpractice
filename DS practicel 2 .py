@@ -2,89 +2,102 @@ P.2. Implement linked list Includes options for
 Insertion deletion and search of a number, reverse
 The list and concatenate two minded lists.
 
-def __init__(self, data): 
+class Node:
 
-        self.data = data 
+    def __init__(self, data):
+
+        self.data = data
 
         self.next = None
-
-class LinkedList: 
-
-    # Function to initialize head 
-
-    def __init__(self): 
-
-        self.head = None
-
  
-    # Function to reverse the linked list 
+# Create and Handle list operations
 
-    def reverse(self): 
+class LinkedList:
 
-        prev = None
+    def __init__(self):
 
-        current = self.head 
+        self.head = None # Head of list
+ 
 
-        while(current is not None): 
+    # Method to reverse the list
 
-            next = current.next
+    def reverse(self, head):
+ 
 
-            current.next = prev 
+        # If head is empty or has reached the list end
 
-            prev = current 
+        if head is None or head.next is None:
 
-            current = next
+            return head
+ 
 
-        self.head = prev 
+        # Reverse the rest list
 
-          
+        rest = self.reverse(head.next)
+ 
 
-    # Function to insert a new node at the beginning 
+        # Put first element at the end
 
-    def push(self, new_data): 
+        head.next.next = head
 
-        new_node = Node(new_data) 
+        head.next = None
+ 
 
-        new_node.next = self.head 
+        # Fix the header pointer
 
-        self.head = new_node 
+        return rest
+ 
 
-  
+    # Returns the linked list in display format
 
-    # Utility function to print the linked LinkedList 
+    def __str__(self):
 
-    def printList(self): 
+        linkedListStr = ""
 
-        temp = self.head 
+        temp = self.head
 
-        while(temp): 
+        while temp:
 
-            print temp.data, 
+            linkedListStr = (linkedListStr +
+
+                            str(temp.data) + " ")
 
             temp = temp.next
 
-  
+        return linkedListStr
+ 
 
-  
-# Driver program to test above functions 
+    # Pushes new data to the head of the list
 
-llist = LinkedList() 
+    def push(self, data):
 
-llist.push(20) 
+        temp = Node(data)
 
-llist.push(4) 
+        temp.next = self.head
 
-llist.push(15) 
+        self.head = temp
+ 
+# Driver code
 
-llist.push(85) 
+linkedList = LinkedList()
 
-  
+linkedList.push(20)
 
-print "Given Linked List"
-llist.printList() 
-llist.reverse() 
+linkedList.push(4)
 
-print "\nReversed Linked List"
-llist.printList() 
+linkedList.push(15)
 
-  
+linkedList.push(85)
+ 
+
+print("Given linked list")
+
+print(linkedList)
+ 
+
+linkedList.head = linkedList.reverse(linkedList.head)
+ 
+
+print("Reversed linked list")
+
+print(linkedList)
