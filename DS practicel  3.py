@@ -57,236 +57,93 @@ TowerOfHanoi(n,'A','B','C')
 C) wap to scan a polyano mail using linked list
 and add two polynomial
 struct Node 
+Code:-
+def add(A, B, m, n): 
 
-{ 
+  
 
-    int coeff; 
+    size = max(m, n); 
 
-    int pow; 
+    sum = [0 for i in range(size)] 
 
-    struct Node *next; 
+    for i in range(0, m, 1): 
 
-};               
+        sum[i] = A[i] 
+ 
 
-// Function to create new node 
+    for i in range(n): 
 
-void create_node(int x, int y, struct Node **temp) 
+        sum[i] += B[i] 
 
-{ 
+  
 
-    struct Node *r, *z; 
+    return sum 
 
-    z = *temp; 
+def printPoly(poly, n): 
 
-    if(z == NULL) 
+    for i in range(n): 
 
-    { 
+        print(poly[i], end = "") 
 
-        r =(struct Node*)malloc(sizeof(struct Node)); 
+        if (i != 0): 
 
-        r->coeff = x; 
+            print("x^", i, end = "") 
 
-        r->pow = y; 
+        if (i != n - 1): 
 
-        *temp = r; 
+            print(" + ", end = "") 
 
-        r->next = (struct Node*)malloc(sizeof(struct Node)); 
+  
+# Driver Code 
 
-        r = r->next; 
+if __name__ == '__main__': 
 
-        r->next = NULL; 
+      
 
-    } 
+    # The following array represents 
 
-    else
+    # polynomial 5 + 10x^2 + 6x^3 
 
-    { 
+    A = [5, 0, 10, 6] 
 
-        r->coeff = x; 
+  
 
-        r->pow = y; 
+    # The following array represents 
 
-        r->next = (struct Node*)malloc(sizeof(struct Node)); 
+    # polynomial 1 + 2x + 4x^2 
 
-        r = r->next; 
+    B = [1, 2, 4] 
 
-        r->next = NULL; 
+    m = len(A) 
 
-    } 
+    n = len(B) 
 
-}   
+  
 
-// Function Adding two polynomial numbers 
+    print("First polynomial is") 
 
-void polyadd(struct Node *poly1, struct Node *poly2, struct Node *poly) 
+    printPoly(A, m) 
 
-{ 
+    print("\n", end = "") 
 
-while(poly1->next && poly2->next) 
+    print("Second polynomial is") 
 
-    { 
+    printPoly(B, n) 
 
-        // If power of 1st polynomial is greater then 2nd, then store 1st as it is 
+    print("\n", end = "") 
 
-        // and move its pointer 
+    sum = add(A, B, m, n) 
 
-        if(poly1->pow > poly2->pow) 
+    size = max(m, n) 
 
-        { 
+  
 
-            poly->pow = poly1->pow; 
+    print("sum polynomial is") 
 
-            poly->coeff = poly1->coeff; 
+    printPoly(sum, size) 
 
-            poly1 = poly1->next; 
 
-        }   
-
-        // If power of 2nd polynomial is greater then 1st, then store 2nd as it is 
-
-        // and move its pointer 
-
-        else if(poly1->pow < poly2->pow) 
-
-        { 
-
-            poly->pow = poly2->pow; 
-
-            poly->coeff = poly2->coeff; 
-
-            poly2 = poly2->next; 
-
-        } 
-
-          // If power of both polynomial numbers is same then add their coefficients 
-
-        else
-
-        { 
-
-            poly->pow = poly1->pow; 
-
-            poly->coeff = poly1->coeff+poly2->coeff; 
-
-            poly1 = poly1->next; 
-
-            poly2 = poly2->next; 
-
-        }    
-
-        // Dynamically create new node 
-
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
-
-        poly = poly->next; 
-
-        poly->next = NULL; 
-
-    } 
-
-while(poly1->next || poly2->next) 
-
-    { 
-
-        if(poly1->next) 
-
-        { 
-
-            poly->pow = poly1->pow; 
-
-            poly->coeff = poly1->coeff; 
-
-            poly1 = poly1->next; 
-
-        } 
-
-        if(poly2->next) 
-
-        { 
-
-            poly->pow = poly2->pow; 
-
-            poly->coeff = poly2->coeff; 
-
-            poly2 = poly2->next; 
-
-        } 
-
-        poly->next = (struct Node *)malloc(sizeof(struct Node)); 
-
-        poly = poly->next; 
-
-        poly->next = NULL; 
-
-    } 
-
-}  
-
-// Display Linked list 
-
-void show(struct Node *node) 
-
-{ 
-
-while(node->next != NULL) 
-
-    { 
-
-    printf("%dx^%d", node->coeff, node->pow); 
-
-    node = node->next; 
-
-    if(node->next != NULL) 
-
-        printf(" + "); 
-
-    } 
-
-}  
-
-int main() 
-
-{ 
-
-    struct Node *poly1 = NULL, *poly2 = NULL, *poly = NULL;    
-
-    // Create first list of 5x^2 + 4x^1 + 2x^0 
-
-    create_node(5,2,&poly1); 
-
-    create_node(4,1,&poly1); 
-
-    create_node(2,0,&poly1);   
-
-    // Create second list of 5x^1 + 5x^0 
-
-    create_node(5,1,&poly2); 
-
-    create_node(5,0,&poly2);   
-
-    printf("1st Number: ");  
-
-    show(poly1); 
-
-    printf("\n2nd Number: "); 
-
-    show(poly2);     
-
-    poly = (struct Node *)malloc(sizeof(struct Node));      
-
-    // Function add two polynomial numbers 
-
-    polyadd(poly1, poly2, poly);    
-
-    // Display resultant List 
-
-    printf("\nAdded polynomial: "); 
-
-    show(poly);   
-
-return 0; 
-
-}  
+     
 
 
 D)wap to calculate factorial and to complete the
